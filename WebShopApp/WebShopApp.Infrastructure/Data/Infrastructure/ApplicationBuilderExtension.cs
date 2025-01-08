@@ -19,7 +19,31 @@ namespace WebShopApp.Infrastructure.Data.Infrastructure
             await RoleSeeder(services);
             await SeedAdministrator(services);
 
-            return app;
+            var dataCategory = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+            SeedCategories(dataCategory);
+
+            var dataBrand = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+            SeedBrands(dataBrand);
+
+
+            return (ApplicationBuilder)app;
+        }
+
+        private static void SeedBrands(ApplicationDbContext dataBrand)
+        {
+            
+        }
+
+        private static void SeedCategories(ApplicationDbContext dataCategory)
+        {
+            if (dataCategory.Categories.Any()) 
+            { 
+                return;
+            }
+            dataCategory.Categories.AddRange(new[]
+            {
+                new Category
+            }
         }
 
         private static async Task RoleSeeder(IServiceProvider serviceProvider)

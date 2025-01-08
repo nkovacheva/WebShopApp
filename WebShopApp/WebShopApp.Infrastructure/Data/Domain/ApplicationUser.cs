@@ -17,7 +17,7 @@ namespace WebShopApp.Infrastructure.Data
 
         [Required]
         [MaxLength(50)]
-        public string Adress { get; set; } = null!;
-        public string Address { get; set; }
+        public string Address { get; set; } = null!;
+       
     }
 }
